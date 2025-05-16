@@ -143,36 +143,7 @@ function commart_better_me_install() {
         FOREIGN KEY (user_id) REFERENCES {$wpdb->prefix}users(ID) ON DELETE CASCADE
     ) $charset_collate;
     
-    CREATE TABLE $tasks_table (
-        id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-        projects_id BIGINT(20) UNSIGNED NOT NULL,
-        user_id BIGINT(20) UNSIGNED NOT NULL,
-        tasks_title VARCHAR(255) NOT NULL,
-        tasks_timer_start DATETIME DEFAULT NULL,
-        tasks_deadline DATE NOT NULL,
-        tasks_status ENUM('pending', 'in_progress', 'completed') DEFAULT 'pending',
-        tasks_elapsed_time INT DEFAULT 0,
-        tasks_report TEXT,
-        tasks_container_status ENUM('play', 'pause') DEFAULT 'pause',
-        tasks_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (id),
-        FOREIGN KEY (projects_id) REFERENCES $projects_table(id) ON DELETE CASCADE,
-        FOREIGN KEY (user_id) REFERENCES {$wpdb->prefix}users(ID) ON DELETE CASCADE
-    ) $charset_collate;
-
-    CREATE TABLE $tasks_reports_table (
-        id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-        tasks_id BIGINT(20) UNSIGNED NOT NULL,
-        tasks_description TEXT NOT NULL,
-        tasks_cost DECIMAL(10,2) NOT NULL,
-        tasks_attached_file BIGINT(20) UNSIGNED DEFAULT NULL,
-        tasks_reported_by BIGINT(20) UNSIGNED NOT NULL,
-        tasks_reported_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (id),
-        FOREIGN KEY (tasks_id) REFERENCES $tasks_table(id) ON DELETE CASCADE,
-        FOREIGN KEY (tasks_attached_file) REFERENCES $files_table(id) ON DELETE SET NULL,
-        FOREIGN KEY (tasks_reported_by) REFERENCES {$wpdb->prefix}users(ID) ON DELETE CASCADE
-    ) $charset_collate;
+   
 
     CREATE TABLE $employer_profiles_table (
         id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
