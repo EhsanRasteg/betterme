@@ -148,7 +148,7 @@ jQuery(document).ready(function($) {
                 "<button class='report-task' data-id='" + task.id + "' data-report=''>گزارش</button>" +
               "</td>" +
               "<td>" +
-                "<button class='edit-task' data-id='" + task.id + "' data-project_id='" + task.project_id + "' data-title='" + task.title + "' data-deadline='" + task.deadline + "'>ویرایش</button>" +
+                "<button class='edit-task' data-id='" + task.id + "' data-projects_id='" + task.projects_id + "' data-title='" + task.title + "' data-deadline='" + task.deadline + "'>ویرایش</button>" +
               "</td>" +
               "<td>" +
                 "<button class='delete-task' data-id='" + task.id + "'>حذف</button>" +
@@ -173,7 +173,7 @@ jQuery(document).ready(function($) {
   $(document).on('click', '.edit-task', function() {
     var id = $(this).data('id');
     $('#task_id').val(id);
-    $('#task_project_id').val($(this).data('project_id'));
+    $('#task_projects_id').val($(this).data('projects_id'));
     $('#task_title').val($(this).data('title'));
     $('#task_deadline').val($(this).data('deadline'));
     $('html, body').animate({scrollTop: $("#task-form").offset().top}, 500);
