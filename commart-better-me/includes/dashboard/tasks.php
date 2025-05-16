@@ -15,7 +15,7 @@ $projects_table = $wpdb->prefix . 'commart_better_me_projects';
 // Fetch the tasks for the current user along with the project title.
 $query = "SELECT t.*, p.projects_title as project_title 
           FROM $tasks_table t 
-          LEFT JOIN $projects_table p ON t.project_id = p.id 
+          LEFT JOIN $projects_table p ON t.projects_id = p.id 
           WHERE t.user_id = %d 
           ORDER BY t.created_at DESC";
 $tasks = $wpdb->get_results( $wpdb->prepare( $query, $current_user->ID ) );
@@ -90,7 +90,7 @@ function format_elapsed_time( $seconds ) {
             <td>
               <button class="edit-task"
                 data-id="<?php echo esc_attr( $task->id ); ?>"
-                data-project_id="<?php echo esc_attr( $task->project_id ); ?>"
+                data-projects_id="<?php echo esc_attr( $task->projects_id ); ?>"
                 data-title="<?php echo esc_attr( $task->title ); ?>"
                 data-deadline="<?php echo esc_attr( $task->deadline ); ?>">
                 ویرایش
@@ -115,8 +115,8 @@ function format_elapsed_time( $seconds ) {
   <form id="task-entry-form">
     <input type="hidden" name="task_id" id="task_id" value="">
     <p>
-      <label for="task_project_id">پروژه:</label>
-      <select name="task_project_id" id="task_project_id" required>
+      <label for="task_projects_id">پروژه:</label>
+      <select name="task_projects_id" id="task_projects_id" required>
         <option value="">انتخاب پروژه</option>
         <?php foreach($projects as $project): ?>
           <option value="<?php echo esc_attr( $project->id ); ?>">
