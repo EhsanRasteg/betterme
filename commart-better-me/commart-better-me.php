@@ -143,7 +143,22 @@ function commart_better_me_install() {
         FOREIGN KEY (user_id) REFERENCES {$wpdb->prefix}users(ID) ON DELETE CASCADE
     ) $charset_collate;
     
-   
+  CREATE TABLE $tasks_table (
+    id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+    project_id BIGINT(20) UNSIGNED NOT NULL,
+    user_id BIGINT(20) UNSIGNED NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    timer_start DATETIME DEFAULT NULL,
+    deadline DATE NOT NULL,
+    status ENUM('pending', 'in_progress', 'paused', 'completed') DEFAULT 'pending',
+    elapsed_time INT DEFAULT 0,
+    report TEXT,
+    container_status ENUM('play', 'pause', 'completed') DEFAULT 'pause',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (project_id) REFERENCES $projects_table(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES {$wpdb->prefix}users(ID) ON DELETE CASCADE
+) $charset_collate;
 
     CREATE TABLE $employer_profiles_table (
         id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -203,6 +218,8 @@ require_once plugin_dir_path(__FILE__) . 'includes/dashboard/lib/ajax-chat-handl
 // Include the general AJAX functions for non-chat content.
 require_once plugin_dir_path(__FILE__) . 'includes/dashboard/lib/ajax-functions.php';
 require_once plugin_dir_path(__FILE__) . 'includes/dashboard/lib/ajax-task.php';
+
+
 
 class CommartBetterMe {
 
@@ -280,22 +297,9 @@ class CommartBetterMe {
                 true
             );
             
-            // Enqueue the timer script for tasks with a unique handle to avoid conflicts
-            wp_enqueue_script(
-                'commart-task-timer-script',
-                plugins_url('includes/dashboard/lib/task-timer-script.js', __FILE__),
-                ['jquery'],
-                null,
-                true
-            );
             
-            wp_enqueue_script(
-                'commart-task-script',
-                plugins_url('includes/dashboard/lib/task-script.js', __FILE__),
-                array('jquery'),
-                null,
-                true
-            );
+            
+           
         }
     }
 
@@ -316,6 +320,35 @@ class CommartBetterMe {
     }
 
     public function shortcode_dashboard() {
+        
+        // Enqueue the timer script for steps – existing code.
+wp_enqueue_script(
+    'commart-timer-script',
+    plugins_url('includes/dashboard/lib/timer-script.js', __FILE__),
+    ['jquery'],
+    null,
+    true
+);
+
+// Enqueue the timer script for tasks with a unique handle to avoid conflicts
+wp_enqueue_script(
+    'commart-task-timer-script',
+    plugins_url('includes/dashboard/lib/task-timer-script.js', __FILE__),
+    ['jquery'],
+    null,
+    true
+);
+
+// Enqueue the AJAX script for tasks
+wp_enqueue_script(
+    'commart-task-script',
+    plugins_url('includes/dashboard/lib/task-script.js', __FILE__),
+    array('jquery'),
+    null,
+    true
+);
+
+
         // Enqueue dashboard style for front end (for shortcode output)
         wp_enqueue_style(
             'commart-dashboard-style',
@@ -346,6 +379,8 @@ class CommartBetterMe {
         }
     }
 }
+
+
 
 new CommartBetterMe();
 ?>
