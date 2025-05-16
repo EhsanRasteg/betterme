@@ -38,7 +38,7 @@ function commart_better_me_install() {
     $employer_brands_table = $wpdb->prefix . 'commart_better_me_employer_brands';
     $projects_table        = $wpdb->prefix . 'commart_better_me_projects';
     $tasks_table           = $wpdb->prefix . 'commart_better_me_tasks';
-    $tasks_reports_table   = $wpdb->prefix . 'commart_better_me_task_reports';
+    
     $employer_profiles_table = $wpdb->prefix . 'commart_better_me_employer_profiles';
 
     // Define $files_table if it exists (adjust table name as necessary)
@@ -145,7 +145,7 @@ function commart_better_me_install() {
     
   CREATE TABLE $tasks_table (
     id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-    project_id BIGINT(20) UNSIGNED NOT NULL,
+    projects_id BIGINT(20) UNSIGNED NOT NULL,
     user_id BIGINT(20) UNSIGNED NOT NULL,
     title VARCHAR(255) NOT NULL,
     timer_start DATETIME DEFAULT NULL,
