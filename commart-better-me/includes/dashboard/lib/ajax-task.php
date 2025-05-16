@@ -139,7 +139,7 @@ function commart_add_update_task(){
     $current_user = wp_get_current_user();
     $data = array(
         'user_id'    => $current_user->ID,
-        'project_id' => intval($form_data['task_project_id']),
+        'projects_id' => intval($form_data['task_projects_id']),
         'title'      => sanitize_text_field($form_data['task_title']),
         'deadline'   => sanitize_text_field($form_data['task_deadline']),
         'status'     => 'pending',
@@ -152,10 +152,10 @@ function commart_add_update_task(){
         $result = $wpdb->update($tasks_table, $data, array('id' => $task_id));
         if(false !== $result){
             // واکشی عنوان پروژه برای نمایش
-            $project = $wpdb->get_row($wpdb->prepare("SELECT projects_title FROM $wpdb->prefix.commart_better_me_projects WHERE id = %d", $data['project_id']));
+            $project = $wpdb->get_row($wpdb->prepare("SELECT projects_title FROM $wpdb->prefix.commart_better_me_projects WHERE id = %d", $data['projects_id']));
             $response = array(
                 'id'                => $task_id,
-                'project_id'        => $data['project_id'],
+                'projects_id'        => $data['projects_id'],
                 'project_title'     => $project ? $project->projects_title : '',
                 'title'             => $data['title'],
                 'deadline'          => $data['deadline'],
@@ -170,10 +170,10 @@ function commart_add_update_task(){
         $result = $wpdb->insert($tasks_table, $data);
         if($result){
             $insert_id = $wpdb->insert_id;
-            $project = $wpdb->get_row($wpdb->prepare("SELECT projects_title FROM $wpdb->prefix.commart_better_me_projects WHERE id = %d", $data['project_id']));
+            $project = $wpdb->get_row($wpdb->prepare("SELECT projects_title FROM $wpdb->prefix.commart_better_me_projects WHERE id = %d", $data['projects_id']));
             $response = array(
                 'id'                => $insert_id,
-                'project_id'        => $data['project_id'],
+                'projects_id'        => $data['projects_id'],
                 'project_title'     => $project ? $project->projects_title : '',
                 'title'             => $data['title'],
                 'deadline'          => $data['deadline'],
