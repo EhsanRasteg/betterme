@@ -1,0 +1,498 @@
+  /* Reset CSS */
+    html,
+    
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+    
+    /* HTML5 display-role reset for older browsers */
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+        display: block;
+    }
+    
+   
+    
+    /* Chat Component Styles with better-me-chat- prefix */
+    .better-me-chat-message-area {
+        height: 100vh;
+        overflow: hidden;
+        padding: 30px 0;
+        background: #f5f5f5;
+    }
+    
+    .better-me-chat-chat-area {
+        position: relative;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 0.3rem;
+        height: 90vh;
+        overflow: hidden;
+        min-height: calc(100% - 1rem);
+    }
+    
+    .better-me-chat-chatlist {
+        outline: 0;
+        height: 100%;
+        overflow: hidden;
+        width: 300px;
+        float: left;
+        padding: 15px;
+    }
+    
+    .better-me-chat-chat-area .better-me-chat-modal-content {
+        border: none;
+        border-radius: 0;
+        outline: 0;
+        height: 100%;
+    }
+    
+    .better-me-chat-chat-area .better-me-chat-modal-dialog-scrollable {
+        height: 100% !important;
+    }
+    
+    .better-me-chat-chatbox {
+        width: auto;
+        overflow: hidden;
+        height: 100%;
+        border-left: 1px solid #ccc;
+    }
+    
+    .better-me-chat-msg-search {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    /* اگر کلاس form-control در داخل بخش چت استفاده شده است، آن را در context ما نگه دارید */
+    .better-me-chat-chat-area .form-control {
+        width: 80%;
+        padding: 0.375rem 0.75rem;
+        font-size: 14px;
+        color: #222;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+    
+    .better-me-chat-chat-area .form-control:focus {
+        outline: 0;
+        box-shadow: inherit;
+    }
+    
+    a.better-me-chat-add img {
+        height: 36px;
+    }
+    
+    /* در صورتی که از nav-tabs استفاده شده، کلاس‌های مربوط به قسمت چت ما */
+    .better-me-chat-chat-area .better-me-chat-nav-tabs {
+        border-bottom: 1px solid #dee2e6;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: inherit;
+    }
+    
+    .better-me-chat-nav-tabs .nav-item {
+        width: 100%;
+    }
+    
+    .better-me-chat-nav-tabs .nav-link {
+        width: 100%;
+        color: #180660;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin-top: 5px;
+        background: transparent;
+        border: 1px solid transparent;
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+    }
+    
+    .better-me-chat-nav-tabs .nav-link.active,
+    .better-me-chat-nav-tabs .nav-item.show .nav-link {
+        color: #222;
+        background-color: #fff;
+        border-color: transparent transparent #000;
+    }
+    
+    .better-me-chat-nav-tabs .nav-link:focus,
+    .better-me-chat-nav-tabs .nav-link:hover {
+        border-color: transparent transparent #000;
+    }
+    
+    .better-me-chat-chat-list h3 {
+        color: #222;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin-bottom: 0;
+    }
+    
+    .better-me-chat-chat-list p {
+        color: #343434;
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: capitalize;
+        margin-bottom: 0;
+    }
+    
+    .better-me-chat-chat-list a.d-flex {
+        margin-bottom: 15px;
+        position: relative;
+    }
+    
+    .better-me-chat-chat-list .better-me-chat-active {
+        position: absolute;
+        bottom: 3px;
+        left: 34px;
+        height: 12px;
+        width: 12px;
+        background: #00DB75;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+    
+    .better-me-chat-msg-head h3 {
+        color: #222;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    
+    .better-me-chat-msg-head p {
+        color: #343434;
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: capitalize;
+        margin-bottom: 0;
+    }
+    
+    .better-me-chat-msg-head {
+        padding: 15px;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .better-me-chat-moreoption {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    
+    .better-me-chat-moreoption .navbar { padding: 0; }
+    
+    .better-me-chat-moreoption li .nav-link { color: #222; font-size: 16px; }
+    
+    .better-me-chat-moreoption .dropdown-toggle::after {
+        display: none;
+    }
+    
+    .better-me-chat-moreoption .dropdown-menu[data-bs-popper] {
+        top: 100%;
+        right: 0;
+        margin-top: 0.125rem;
+    }
+    
+    .better-me-chat-msg-body ul {
+        overflow: hidden;
+    }
+    
+    .better-me-chat-msg-body ul li {
+        margin: 15px 0;
+        list-style: none;
+    }
+    
+    .better-me-chat-msg-body ul li.sender {
+        position: relative;
+    }
+    
+    .better-me-chat-msg-body ul li.sender:before {
+        content: '';
+        position: absolute;
+        top: -6px;
+        left: -7px;
+        border-style: solid;
+        border-width: 0 12px 15px 12px;
+        border-color: transparent transparent #f5f5f5 transparent;
+        transform: rotate(-37deg);
+    }
+    
+    .better-me-chat-msg-body ul li.sender p {
+        color: #000;
+        font-size: 14px;
+        padding: 15px;
+        background: #f5f5f5;
+        display: inline-block;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        margin-bottom: 0;
+    }
+    
+    .better-me-chat-msg-body ul li.repaly {
+        text-align: right;
+        position: relative;
+    }
+    
+    .better-me-chat-msg-body ul li.repaly:before {
+        content: '';
+        position: absolute;
+        bottom: 15px;
+        right: -7px;
+        border-style: solid;
+        border-width: 0 12px 15px 12px;
+        border-color: transparent transparent #4b7bec transparent;
+        transform: rotate(37deg);
+    }
+    
+    .better-me-chat-msg-body ul li.repaly p {
+        color: #fff;
+        font-size: 14px;
+        padding: 15px;
+        background: #4b7bec;
+        display: inline-block;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        margin-bottom: 0;
+    }
+    
+    .better-me-chat-msg-body .time {
+        display: block;
+        color: #000;
+        font-size: 12px;
+    }
+    
+    .better-me-chat-divider {
+        position: relative;
+        text-align: center;
+    }
+    
+    .better-me-chat-msg-body h6 {
+        text-align: center;
+        font-size: 14px;
+        color: #222;
+        display: inline-block;
+        padding: 0 5px;
+        margin-bottom: 0;
+    }
+    
+    .better-me-chat-divider:after {
+        content: '';
+        position: absolute;
+        top: 12px;
+        left: 0;
+        border-top: 1px solid #EBEBEB;
+        width: 100%;
+        z-index: -1;
+    }
+    
+    .better-me-chat-send-box {
+        padding: 15px;
+        border-top: 1px solid #ccc;
+    }
+    
+    .better-me-chat-send-box form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+    
+    .better-me-chat-send-box .form-control {
+        width: 85%;
+        padding: 0.375rem 0.75rem;
+        font-size: 14px;
+        color: #222;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+    }
+    
+    .better-me-chat-send-box button {
+        border: none;
+        background: #3867d6;
+        padding: 0.375rem 5px;
+        color: #fff;
+        border-radius: 0.25rem;
+        font-size: 14px;
+        width: 24%;
+        margin-left: 1%;
+    }
+    
+    .better-me-chat-send-btns .better-me-chat-button-wrapper {
+        position: relative;
+        width: 125px;
+        background: #F6F7FA;
+        border-radius: 3px;
+        padding: 5px 15px;
+        float: left;
+        margin: 0 5px 5px 0;
+    }
+    
+    .better-me-chat-send-btns .better-me-chat-button-wrapper span.label {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        cursor: pointer;
+        color: #343945;
+        font-size: 13px;
+    }
+    
+    #better-me-chat-upload {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    
+    .better-me-chat-send-btns .better-me-chat-attach .form-control {
+        width: 120px;
+        padding: 5px 8px;
+        font-size: 13px;
+        color: #343945;
+        background-color: #F6F7FA;
+        border: 1px solid #F6F7FA;
+        border-radius: 3px;
+        margin-bottom: 5px;
+    }
+    
+    .better-me-chat-send-btns .better-me-chat-button-wrapper span.label img {
+        margin-right: 5px;
+    }
+    
+    .better-me-chat-add-apoint {
+        display: inline-block;
+        margin-left: 5px;
+    }
+    
+    .better-me-chat-add-apoint a {
+        background: #F6F7FA;
+        border-radius: 8px;
+        padding: 8px;
+        font-size: 13px;
+        color: #343945;
+    }
+    
+    .better-me-chat-chat-icon {
+        display: none;
+    }
+    
+    @media (max-width: 767px) {
+        .better-me-chat-chat-icon { display: block; margin-right: 5px; }
+        .better-me-chat-chatlist { width: 100%; }
+        .better-me-chat-chatbox {
+            width: 100%;
+            position: absolute;
+            left: 1000px;
+            background: #fff;
+            transition: all 0.5s ease;
+            border-left: none;
+        }
+        .better-me-chat-chatbox.showbox { left: 0 !important; transition: all 0.5s ease; }
+        .better-me-chat-msg-head h3 { font-size: 14px; }
+        .better-me-chat-msg-head p { font-size: 12px; }
+        .better-me-chat-msg-head .flex-shrink-0 img { height: 30px; }
+        .better-me-chat-send-box button { width: 28%; }
+        .better-me-chat-send-box .form-control { width: 70%; }
+        .better-me-chat-chat-list h3 { font-size: 14px; }
+        .better-me-chat-chat-list p { font-size: 12px; }
+        .better-me-chat-msg-body ul li.sender p,
+        .better-me-chat-msg-body ul li.repaly p { font-size: 13px; padding: 8px; border-radius: 6px; }
+    }
